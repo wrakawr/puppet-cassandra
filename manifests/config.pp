@@ -47,6 +47,18 @@ class cassandra::config(
         require => Class['cassandra::install'],
     }
 
+    file { $commitlog_directory:
+    	ensure => directory,
+	owner => 'cassandra',
+        group => 'cassandra',
+    }
+
+    file { $saved_caches_directory:
+        ensure => directory,
+        owner => 'cassandra',
+        group => 'cassandra',
+    }
+
     file { $data_file_directories:
         ensure  => directory,
     }
